@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+// Theme Colors
+$red: #DC3545;
+$green: #4bb543;
+$orange: #fea250;
+$white: #fff;
 
 html,
-body, app-container {
+body,
+app-container {
   height: 100%;
 }
 
@@ -14,6 +20,66 @@ body {
   background-size: cover;
 }
 
+
+
+// Remove Default Margin Styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+}
+
 .container-wrapper {
-    height: 100vh;
+  height: 100vh;
+}
+
+.main-content-card {
+  border-radius: 2em !important;
+}
+
+.section-padding {
+  padding: 1.5em;
+}
+
+// Colors
+.orange-color {
+  color: $orange;
+}
+
+.green-color {
+  color: $green;
+}
+
+.red-color {
+  color: $red;
+}
+
+.white-color,
+.chip {
+  color: #ffffff !important;
+}
+
+// Background Colors
+.orange-bg {
+  background-color: $orange !important;
+}
+
+.green-bg {
+  background-color: $green !important;
+}
+
+.red-bg {
+  background-color: $red !important;
+}
+
+.chip {
+  border-radius: 2em !important;
+  padding: 5px 10px !important;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
 }

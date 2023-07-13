@@ -1,5 +1,29 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
     <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px">
         <app-toolbar></app-toolbar>
+        <div class="section-padding" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px">
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1em">
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1.5em">
+                    <h1><b>You have 8 unfinished tasks</b></h1>
+                    <button mat-raised-button color="primary"><mat-icon>add</mat-icon>Add Task</button>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px">
+                    <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1.5em">
+                        <h2>Tasks</h2>
+                        <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1em">
+                            <div fxLayout="column" fxLayoutAlign="center stretch" fxFlex="31">
+                                <b>Task Name</b>
+                            </div>
+                            <div fxLayout="column" fxLayoutAlign="start start" fxFlex="10">
+                                <b>Task Status</b>
+                            </div>
+                            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="10">
+                                <b>Importance</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
