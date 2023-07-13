@@ -9,12 +9,22 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './modules/material.module';
 import { ContainerComponent } from './container/container.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { TaskviewComponent } from './taskview/taskview.component';
+import { TaskComponent } from './task/task.component';
+import { HomeComponent } from './home/home.component';
+import { DynamicDialogComponent } from './dynamic-dialog/dynamic-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    TaskviewComponent,
+    TaskComponent,
+    HomeComponent,
+    DynamicDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
