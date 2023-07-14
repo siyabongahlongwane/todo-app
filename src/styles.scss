@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 // Theme Colors
+$primary: #3f51b5;
 $red: #DC3545;
 $green: #4bb543;
 $orange: #fea250;
@@ -15,11 +16,13 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-image: url('./assets/img/background.jpg');
-  width: 100%;
   background-position: center center;
   background-size: cover;
 }
 
+body, .block-width {
+  width: 100%;
+}
 
 
 // Remove Default Margin Styles
@@ -46,6 +49,10 @@ h6 {
 }
 
 // Colors
+.primary-color {
+  color: $primary;
+}
+
 .orange-color {
   color: $orange;
 }
@@ -64,6 +71,10 @@ h6 {
 }
 
 // Background Colors
+.primary-bg {
+  background-color: $primary !important;
+}
+
 .orange-bg {
   background-color: $orange !important;
 }

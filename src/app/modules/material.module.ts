@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 const MatComponents = [
   MatButtonModule,
@@ -25,7 +26,8 @@ const MatComponents = [
   MatMenuModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSelectModule
 ]
 
 

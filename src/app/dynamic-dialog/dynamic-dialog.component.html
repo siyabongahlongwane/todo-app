@@ -1,1 +1,45 @@
-<p>dynamic-dialog works!</p>
+<div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px">
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="100">
+        <div class="primary-bg section-padding" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0px"
+            fxFlex="60px">
+            <h4 class="white-color">{{ data.text.title }}</h4>
+            <mat-icon class="white-color pointer" mat-dialog-close=>close</mat-icon>
+        </div>
+        <div class="block-width" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0px">
+            <form class="block-width">
+                <div class="section-padding" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="100">
+                    <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
+                        <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                            <mat-label><b>Task Name</b> <span class="red-color">*</span></mat-label>
+                            <mat-form-field class="block-width" [appearance]="'outline'" [hideRequiredMarker]="false">
+                                <textarea name="taskName" [(ngModel)]="dataModel.taskName"  matInput placeholder="Enter Task Name" [required]="true" type="text" rows="5"></textarea>
+                                <mat-error *ngIf="true">
+                                    Task Name is required!
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
+                        <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                            <mat-form-field  [appearance]="'outline'" [hideRequiredMarker]="false">
+                                <mat-label>Task Priority</mat-label>
+                                <mat-select placeholder="Enter Task Priority" [required]="true" name="priority" [(ngModel)]="dataModel.priority">
+                                  <mat-option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="true">
+                                    Task Priority is required!
+                                </mat-error>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
+                        <div fxLayout="column" fxLayoutAlign="start stretch">
+                            <button *ngIf="data.action == 'add'" mat-raised-button color="primary">Add Todo</button>
+                            <button *ngIf="data.action == 'edit'" mat-raised-button color="primary">Update Todo</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
