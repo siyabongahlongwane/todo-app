@@ -22,4 +22,9 @@ export class TaskComponent {
       if(updatedTodo) this.genericService.updateTodos('edit', updatedTodo);
     });
   }
+
+  toggleCheckbox(checked: any){
+    this.task.status = checked ? 'Completed' : 'Pending';
+    this.genericService.updateTodos('edit', this.task);
+  }
 }

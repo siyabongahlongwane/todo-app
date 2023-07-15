@@ -40,9 +40,8 @@ export class TaskviewComponent implements OnInit {
   constructor(private genericService: GenericService){}
 
   ngOnInit(): void {
-    // this.openTaskDialogFromService();
     this.genericService.todos$.subscribe((todos: Todo[]) => {
-      this.todos = todos;
+      this.todos = todos.sort((a: any, b: any) => b.status - a.status);
     });
   }
 
@@ -53,5 +52,9 @@ export class TaskviewComponent implements OnInit {
         this.genericService.updateTodos('add', todo);
       }
     });
+  }
+
+  ngOnDestroy(){
+    this.genericService.todosSubject.unsubscribe();
   }
 }

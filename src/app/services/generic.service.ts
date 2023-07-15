@@ -64,12 +64,12 @@ export class GenericService {
         console.log(action, tasks)
         this.todosArr.forEach((todo: Todo, index: number) => {
           if(todo.id == tasks.id) this.todosArr[index] = tasks; 
+          this.openSnackbar('Todo updated successfully', ['green-bg', 'white-color']);
         })
         break;
       default:
         break;
     }
-    console.log(this.todosArr)
     localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.todosArr));
     this.todosSubject.next(this.todosArr);
   }
