@@ -13,6 +13,13 @@ export class TaskComponent {
 
   constructor(private genericService: GenericService){}
 
+  openConfirmDialog(id : string){
+    let msg = 'Do you want to cancel this task?'
+    this.genericService.openConfirmDialog({msg}).subscribe((confirmation: boolean) => {
+      if(confirmation) this.deleteTask(id);
+    });
+  }
+
   deleteTask(id : string){
     this.genericService.deleteTodo(id);
   }

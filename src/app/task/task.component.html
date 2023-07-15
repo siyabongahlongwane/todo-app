@@ -19,7 +19,7 @@
     <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15">
         <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap=".25em">
             <mat-icon (click)="editTask(task)" class="orange-color pointer">edit</mat-icon>
-            <mat-icon (click)="deleteTask(task.id)" class="red-color pointer">delete</mat-icon>
+            <mat-icon (click)="openConfirmDialog(task.id)" class="red-color pointer">delete</mat-icon>
         </div>
     </div>
 </div>

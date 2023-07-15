@@ -4,6 +4,7 @@ import { DynamicDialogComponent } from '../dynamic-dialog/dynamic-dialog.compone
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Todo } from '../taskview/taskview.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -24,14 +25,23 @@ export class GenericService {
       disableClose: true,
       width: '500px',
       height: '425px',
-      data: data,
-      panelClass: 'dynamic-dialog'
+      data: data
+    }).afterClosed();
+  }
+
+  openConfirmDialog(data: any){
+    return this.dialog.open(ConfirmDialogComponent, {
+      hasBackdrop: true,
+      disableClose: true,
+      width: '300px',
+      height: '165px',
+      data: data
     }).afterClosed();
   }
 
   openSnackbar(message: string, panelClass: string[]){
     this.snackkbar.open(message, '', {
-      duration: 30000,
+      duration: 3000,
       panelClass: [...panelClass],
       verticalPosition: 'top',
       horizontalPosition: 'end'

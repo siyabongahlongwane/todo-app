@@ -20,7 +20,7 @@ body {
   background-size: cover;
 }
 
-body, .block-width {
+body, .block-width, app-confirm-dialog {
   width: 100%;
 }
 
@@ -81,10 +81,6 @@ h6 {
 
 .green-bg, .green-bg > .mdc-snackbar__surface {
   background-color: $green !important;
-}
-
-.red-bg, .red-bg > .mdc-snackbar__surface  {
-  background-color: $red !important;
 }
 
 .chip {
