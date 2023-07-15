@@ -12,7 +12,6 @@ export class GenericService {
   todosSubject = new BehaviorSubject<any>([]);
   todos$ = this.todosSubject.asObservable();
   todosArr: Todo[] = [];
-
   LOCAL_STORAGE_KEY: string = 'todos';
 
   constructor(private dialog: MatDialog, private snackkbar: MatSnackBar) {
@@ -39,11 +38,13 @@ export class GenericService {
     })
   }
 
+  // Fetch Tasks
   fetchTodos() {
     this.todosArr = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_KEY) || '[]');
     this.updateTodos('', this.todosArr);
   }
 
+  // Delete Task
   deleteTodo(id: string){
     this.todosArr.forEach((todo: any, index: number) => {
       if(todo.id === id){
@@ -54,6 +55,7 @@ export class GenericService {
     this.updateTodos('', this.todosArr);
   }
 
+  // Update Tasks
   updateTodos(action: string = '', tasks: any): any{
     switch (action) {
       case 'add':
@@ -71,6 +73,17 @@ export class GenericService {
         break;
     }
     localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.todosArr));
-    this.todosSubject.next(this.todosArr);
+    this.todosSubject.next(this.sortTodos(this.todosArr));
   }
+
+    // Sort Tasks - uncompleted tasks followed by completed tasks
+    sortTodos(todos: Todo[]): Todo[]{
+    const pendingTasks: Todo[] = [];
+    const competedTasks: Todo[] = [];
+    todos.forEach((todo: Todo) => {
+      if(todo.status === 'Pending') pendingTasks.push(todo);
+      if(todo.status === 'Completed') competedTasks.push(todo);
+    })
+    return [...pendingTasks, ...competedTasks];
+    }
 }

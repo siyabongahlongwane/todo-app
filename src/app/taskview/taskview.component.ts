@@ -41,7 +41,7 @@ export class TaskviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.genericService.todos$.subscribe((todos: Todo[]) => {
-      this.todos = todos.sort((a: any, b: any) => b.status - a.status);
+      this.todos = todos;
     });
   }
 
