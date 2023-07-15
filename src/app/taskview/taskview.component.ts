@@ -15,6 +15,7 @@ export interface Todo {
 })
 export class TaskviewComponent implements OnInit {
   todos!: Todo[];
+  uncompletedTasks: number = 0;
   taskHeaders: any[] = [
     {
       label: 'Task Name',
@@ -40,8 +41,13 @@ export class TaskviewComponent implements OnInit {
   constructor(private genericService: GenericService){}
 
   ngOnInit(): void {
+    this.fetchAllTasks();
+  }
+
+  fetchAllTasks(){
     this.genericService.todos$.subscribe((todos: Todo[]) => {
       this.todos = todos;
+      this.uncompletedTasks = this.todos.filter((todo: Todo) => todo.status == 'Pending')?.length;
     });
   }
 
