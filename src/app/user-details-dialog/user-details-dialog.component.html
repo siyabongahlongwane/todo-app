@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px" class="section-padding">
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1em" fxFlex="100">
+        <h3 class="align-center">Hi, Welcome to the Todo App. What is your name?</h3>
+        <form #usernameForm="ngForm">
+            <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
+                <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                    <mat-label><b>Name</b> <span class="red-color">*</span></mat-label>
+                    <mat-form-field class="block-width" [appearance]="'outline'" [hideRequiredMarker]="false">
+                        <input #userName="ngModel" [(ngModel)]="username" name="username" matInput
+                            placeholder="Enter Your Name" [required]="true" type="text">
+                        <mat-error *ngIf="userName.errors?.['required']">
+                            Your Name is required!
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px" class="margin-top-sm">
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="47">
+                <button [disabled]="usernameForm.invalid" [mat-dialog-close]="username" color="primary"
+                    mat-raised-button>Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

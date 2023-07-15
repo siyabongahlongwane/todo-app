@@ -14,6 +14,7 @@ import { TaskComponent } from './task/task.component';
 import { HomeComponent } from './home/home.component';
 import { DynamicDialogComponent } from './dynamic-dialog/dynamic-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { UserDetailsDialogComponent } from './user-details-dialog/user-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     TaskComponent,
     HomeComponent,
     DynamicDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    UserDetailsDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Todo } from '../taskview/taskview.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { UserDetailsDialogComponent } from '../user-details-dialog/user-details-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,15 @@ export class GenericService {
       width: '300px',
       height: '165px',
       data: data
+    }).afterClosed();
+  }
+
+  openUserNameDialog(){
+    return this.dialog.open(UserDetailsDialogComponent, {
+      hasBackdrop: true,
+      disableClose: true,
+      width: '300px',
+      height: '260px'
     }).afterClosed();
   }
 

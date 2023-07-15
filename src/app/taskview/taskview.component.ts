@@ -16,6 +16,7 @@ export interface Todo {
 export class TaskviewComponent implements OnInit {
   todos!: Todo[];
   uncompletedTasks: number = 0;
+  username: string = '';
   taskHeaders: any[] = [
     {
       label: 'Task Name',
@@ -41,7 +42,21 @@ export class TaskviewComponent implements OnInit {
   constructor(private genericService: GenericService){}
 
   ngOnInit(): void {
+    this.checkIfCapturedUsername();
     this.fetchAllTasks();
+  }
+
+  checkIfCapturedUsername(){
+    const user = localStorage.getItem('username');
+    const username = user ? user : null;
+    if(!username) {
+      this.genericService.openUserNameDialog().subscribe((username: string) => {
+        localStorage.setItem('username', username);
+      });
+    } else {
+      this.username = username;
+      console.log(this.username)
+    }
   }
 
   fetchAllTasks(){

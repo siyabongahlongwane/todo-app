@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
     <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px">
-        <app-toolbar></app-toolbar>
+        <app-toolbar [username]="username"></app-toolbar>
         <div class="section-padding" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px">
             <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1em">
                 <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1.5em">
@@ -16,7 +16,7 @@
                                 <b>{{ header.label }}</b>
                             </div>
                         </div>
-                        <div *ngIf="todos.length" fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
+                        <div *ngIf="todos?.length" fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
                             <app-task *ngFor="let task of todos" [task]="task"></app-task>
                         </div>
                     </div>
