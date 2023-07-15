@@ -66,12 +66,12 @@ h6 {
 }
 
 .white-color,
-.chip, .mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+.chip, .mat-mdc-snack-bar-container  {
   color: #ffffff !important;
 }
 
 // Background Colors
-.primary-bg {
+.primary-bg, .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background {
   background-color: $primary !important;
 }
 
@@ -79,11 +79,11 @@ h6 {
   background-color: $orange !important;
 }
 
-.green-bg {
+.green-bg, .green-bg > .mdc-snackbar__surface {
   background-color: $green !important;
 }
 
-.red-bg, .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+.red-bg, .red-bg > .mdc-snackbar__surface  {
   background-color: $red !important;
 }
 
@@ -102,4 +102,8 @@ h6 {
 .mat-snack-bar-container {
   color: rgba(255, 255, 255, 0.7);
   background: $primary;
+}
+
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+  border-color: $primary !important;
 }

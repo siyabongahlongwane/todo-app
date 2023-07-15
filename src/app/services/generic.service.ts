@@ -31,8 +31,8 @@ export class GenericService {
 
   openSnackbar(message: string, panelClass: string[]){
     this.snackkbar.open(message, '', {
-      duration: 3000,
-      panelClass,
+      duration: 30000,
+      panelClass: [...panelClass],
       verticalPosition: 'top',
       horizontalPosition: 'end'
     })
@@ -49,7 +49,7 @@ export class GenericService {
     this.todosArr.forEach((todo: any, index: number) => {
       if(todo.id === id){
         this.todosArr.splice(index, 1);
-        this.openSnackbar('Todo deleted successfully', ['green-bg', 'white-color']);
+        this.openSnackbar('Task deleted successfully', ['green-bg', 'white-color']);
       };
     });
     this.updateTodos('', this.todosArr);
@@ -63,7 +63,6 @@ export class GenericService {
         break;
 
       case 'edit':
-        console.log(action, tasks)
         this.todosArr.forEach((todo: Todo, index: number) => {
           if(todo.id == tasks.id) this.todosArr[index] = tasks; 
           this.openSnackbar('Todo updated successfully', ['green-bg', 'white-color']);

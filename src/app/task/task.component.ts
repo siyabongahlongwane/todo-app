@@ -18,7 +18,7 @@ export class TaskComponent {
   }
 
   editTask(task : Todo){
-    this.genericService.openTaskDialog({text: {title: 'Edit Todo', buttonText: 'Update Todo'}, task}).subscribe((updatedTodo: Todo) => {
+    this.genericService.openTaskDialog({text: {title: 'Edit Task', buttonText: 'Update Task'}, task}).subscribe((updatedTodo: Todo) => {
       if(updatedTodo) this.genericService.updateTodos('edit', updatedTodo);
     });
   }

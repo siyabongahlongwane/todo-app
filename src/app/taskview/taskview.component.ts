@@ -46,10 +46,11 @@ export class TaskviewComponent implements OnInit {
   }
 
   openTaskDialogFromService(){
-    let dialogData = {action: "add", text: {title: 'Add New Todo', buttonText: 'Add Todo'}, task: {}};
+    let dialogData = {action: "add", text: {title: 'Add New Task', buttonText: 'Add Task'}, task: {}};
     this.genericService.openTaskDialog(dialogData).subscribe((todo: any) => {
       if(todo){
         this.genericService.updateTodos('add', todo);
+        this.genericService.openSnackbar('Task Added Successfully', ['green-bg']);
       }
     });
   }
