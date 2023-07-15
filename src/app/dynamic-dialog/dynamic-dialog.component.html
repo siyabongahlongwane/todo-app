@@ -27,7 +27,7 @@
                         <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                             <mat-form-field class="block-width" [appearance]="'outline'" [hideRequiredMarker]="false">
                                 <mat-label><b>Choose a date</b> <span class="red-color">*</span></mat-label>
-                                <input readonly (click)="picker.open()" matInput [matDatepicker]="picker" name="dueDate" [(ngModel)]="dataModel.dueDate"
+                                <input [min]="minDate" readonly (click)="picker.open()" matInput [matDatepicker]="picker" name="dueDate" [(ngModel)]="dataModel.dueDate"
                                 placeholder="Choose a date" [required]="true" type="text"
                                 #dueDate="ngModel">
                                 <mat-datepicker #picker></mat-datepicker>

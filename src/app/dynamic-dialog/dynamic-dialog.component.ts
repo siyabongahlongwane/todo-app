@@ -18,6 +18,7 @@ export class DynamicDialogComponent {
     priority: '',
     status: ''
   }
+  minDate = new Date();
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DynamicDialogComponent>, private genericService: GenericService){
     Object.assign(this.dataModel, data.task);
   }
@@ -25,8 +26,9 @@ export class DynamicDialogComponent {
   closeDialog(form: NgForm){
     if(form.invalid) this.genericService.openSnackbar('Please enter all required fields', ['red-bg', 'white-color']);
     else {
-      form.value.id = form.value.id ? form.value.id : new Date().getTime().toString();
-      form.value.status = this.data.status ? this.data.status : 'Pending';
+      let { task } = this.data;
+      form.value.id = task.id ? task.id : new Date().getTime().toString();
+      form.value.status = task.status ? task.status : 'Pending';
       this.dialogRef.close(form.value);
     };
   }
