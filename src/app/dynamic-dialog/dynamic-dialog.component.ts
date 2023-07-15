@@ -10,22 +10,23 @@ import { Todo } from '../taskview/taskview.component';
   styleUrls: ['./dynamic-dialog.component.scss']
 })
 export class DynamicDialogComponent {
-  priorities: string[] = ['Low', 'Average', 'Medium'];
+  priorities: string[] = ['Low', 'Average', 'Urgent'];
   dataModel: Todo = {
-    taskName: "",
-    priority: "",
-    status: ""
+    id: '',
+    taskName: '',
+    dueDate: 0,
+    priority: '',
+    status: ''
   }
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DynamicDialogComponent>, private genericService: GenericService){
     Object.assign(this.dataModel, data.task);
-    console.log(this.dataModel, this.data)
   }
 
   closeDialog(form: NgForm){
-    console.log(form);
-    if(form.invalid) this.genericService.openSnackbar("Please enter all required fields", ['red-bg', 'white-color']);
+    if(form.invalid) this.genericService.openSnackbar('Please enter all required fields', ['red-bg', 'white-color']);
     else {
       form.value.id = form.value.id ? form.value.id : new Date().getTime().toString();
+      form.value.status = this.data.status ? this.data.status : 'Pending';
       this.dialogRef.close(form.value);
     };
   }

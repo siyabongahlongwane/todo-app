@@ -13,12 +13,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const MatComponents = [
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatNativeDateModule,
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,

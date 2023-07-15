@@ -7,13 +7,17 @@
         </div>
         <div class="block-width" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0px">
             <form #todoForm="ngForm" class="block-width">
-                <div class="section-padding" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="100">
+                <div class="section-padding" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px"
+                    fxFlex="100">
                     <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
                         <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                             <mat-label><b>Task Name</b> <span class="red-color">*</span></mat-label>
                             <mat-form-field class="block-width" [appearance]="'outline'" [hideRequiredMarker]="false">
-                                <textarea #textInput name="taskName" [(ngModel)]="dataModel.taskName"  matInput placeholder="Enter Task Name" [required]="true" type="text" rows="5" #taskName="ngModel" ></textarea>
-                                <mat-error *ngIf="((taskName?.touched || taskName?.invalid) && taskName.errors?.['required'])">
+                                <input name="taskName" [(ngModel)]="dataModel.taskName" matInput
+                                    placeholder="Enter Task Name" [required]="true" type="text"
+                                    #taskName="ngModel">
+                                <mat-error
+                                    *ngIf="((taskName?.touched || taskName?.invalid) && taskName.errors?.['required'])">
                                     Task Name is required!
                                 </mat-error>
                             </mat-form-field>
@@ -21,20 +25,39 @@
                     </div>
                     <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
                         <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
-                            <mat-form-field  [appearance]="'outline'" [hideRequiredMarker]="false">
+                            <mat-form-field class="block-width" [appearance]="'outline'" [hideRequiredMarker]="false">
+                                <mat-label><b>Choose a date</b> <span class="red-color">*</span></mat-label>
+                                <input readonly (click)="picker.open()" matInput [matDatepicker]="picker" name="dueDate" [(ngModel)]="dataModel.dueDate"
+                                placeholder="Choose a date" [required]="true" type="text"
+                                #dueDate="ngModel">
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error
+                                    *ngIf="((dueDate?.touched || dueDate?.invalid) && !dueDate.errors?.['matDatepickerParse'].text)">
+                                    Date is required!
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
+                        <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                            <mat-form-field [appearance]="'outline'" [hideRequiredMarker]="false">
                                 <mat-label>Task Priority</mat-label>
-                                <mat-select placeholder="Enter Task Priority" [required]="true" name="priority" [(ngModel)]="dataModel.priority" #priority="ngModel" >
-                                  <mat-option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</mat-option>
+                                <mat-select placeholder="Enter Task Priority" [required]="true" name="priority"
+                                    [(ngModel)]="dataModel.priority" #priority="ngModel">
+                                    <mat-option *ngFor="let priority of priorities" [value]="priority">{{ priority
+                                        }}</mat-option>
                                 </mat-select>
-                                <mat-error *ngIf="(priority?.touched && todoForm.controls['priority'].errors?.['required']) || priority.invalid">
+                                <mat-error
+                                    *ngIf="(priority?.touched && todoForm.controls['priority'].errors?.['required']) || priority.invalid">
                                     Task Priority is required!
                                 </mat-error>
-                              </mat-form-field>
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="block-width" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="0px">
                         <div fxLayout="column" fxLayoutAlign="start stretch">
-                            <button (click)="closeDialog(todoForm)" mat-raised-button color="primary">{{ data.text.buttonText }}</button>
+                            <button (click)="closeDialog(todoForm)" mat-raised-button color="primary">{{
+                                data.text.buttonText }}</button>
                         </div>
                     </div>
                 </div>
