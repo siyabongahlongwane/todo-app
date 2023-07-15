@@ -11,6 +11,8 @@ import { Todo } from '../taskview/taskview.component';
 export class GenericService {
   todosSubject = new BehaviorSubject<any>([]);
   todos$ = this.todosSubject.asObservable();
+  todosArr: Todo[] = [];
+
   LOCAL_STORAGE_KEY: string = 'todos';
 
   constructor(private dialog: MatDialog, private snackkbar: MatSnackBar) {
@@ -38,22 +40,37 @@ export class GenericService {
   }
 
   fetchTodos() {
-    const todos = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_KEY) || '[]');
-    this.updateTodos(todos);
+    this.todosArr = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_KEY) || '[]');
+    this.updateTodos('', this.todosArr);
   }
 
-  deleteTodo(id: string, todos: Todo[]){
-    todos.forEach((todo: any, index: number) => {
+  deleteTodo(id: string){
+    this.todosArr.forEach((todo: any, index: number) => {
       if(todo.id === id){
-        todos.splice(index, 1);
+        this.todosArr.splice(index, 1);
         this.openSnackbar('Todo deleted successfully', ['green-bg', 'white-color']);
       };
     });
-    this.updateTodos(todos);
+    this.updateTodos('', this.todosArr);
   }
 
-  updateTodos(todos: Todo[]): any{
-    localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(todos));
-    this.todosSubject.next(todos);
+  updateTodos(action: string = '', tasks: any): any{
+    switch (action) {
+      case 'add':
+        this.todosArr = [...this.todosArr, tasks];
+        break;
+
+      case 'edit':
+        console.log(action, tasks)
+        this.todosArr.forEach((todo: Todo, index: number) => {
+          if(todo.id == tasks.id) this.todosArr[index] = tasks; 
+        })
+        break;
+      default:
+        break;
+    }
+    console.log(this.todosArr)
+    localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.todosArr));
+    this.todosSubject.next(this.todosArr);
   }
 }

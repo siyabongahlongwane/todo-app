@@ -2,19 +2,24 @@
     <div fxLayout="column" fxLayoutAlign="center stretch" fxFlex="31">
         <div fxLayout="row wrap" fxLayoutAlign="start center">
             <mat-checkbox></mat-checkbox>
-            <span>This is a task</span>
+            <span>{{ task.taskName }}</span>
         </div>
     </div>
-    <div fxLayout="column" fxLayoutAlign="start start" fxFlex="10">
-        <span class="orange-bg chip">State</span>
+    <div fxLayout="column" fxLayoutAlign="start start" fxFlex="15">
+        <span [ngClass]="{'orange-bg': task.status == 'Pending', 'green-bg': task.status == 'Complete' }" class="chip">{{ task.status }}</span>
     </div>
-    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="10">
-        <span class="orange-color"><b>Importance</b></span>
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15">
+        <span [ngClass]="{'primary-color': task.priority == 'Low', 'orange-color': task.priority == 'Average', 'red-color': task.priority == 'Urgent' }"><b> {{ task.priority }} </b></span>
     </div>
-    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="10">
+
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15">
+        <span><b> {{ task.dueDate | date: 'mediumDate' }} </b></span>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15">
         <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap=".25em">
-            <mat-icon class="orange-color pointer">edit</mat-icon>
-            <mat-icon class="red-color pointer">delete</mat-icon>
+            <mat-icon (click)="editTask(task)" class="orange-color pointer">edit</mat-icon>
+            <mat-icon (click)="deleteTask(task.id)" class="red-color pointer">delete</mat-icon>
         </div>
     </div>
 </div>
