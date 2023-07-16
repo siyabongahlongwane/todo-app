@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
     <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px">
         <app-toolbar [username]="username"></app-toolbar>
-        <div class="section-padding" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px">
+        <div class="section-padding" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="80vh">
             <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1em">
                 <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1.5em">
                     <h1>You have <b><span class="red-color">{{uncompletedTasks}}</span></b> unfinished tasks</h1>
@@ -16,8 +16,11 @@
                                 <b>{{ header.label }}</b>
                             </div>
                         </div>
-                        <div *ngIf="todos?.length" fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
+                        <div class="scroll" *ngIf="todos?.length" fxFlex="72" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
                             <app-task *ngFor="let task of todos" [task]="task"></app-task>
+                        </div>
+                        <div class="scroll" *ngIf="!todos?.length" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
+                            <h1>You have no tasks yet.</h1>
                         </div>
                     </div>
                 </div>
