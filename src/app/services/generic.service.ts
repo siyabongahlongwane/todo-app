@@ -85,7 +85,7 @@ export class GenericService {
       case 'edit':
         this.todosArr.forEach((todo: Todo, index: number) => {
           if(todo.id == tasks.id) this.todosArr[index] = tasks; 
-          this.openSnackbar('Todo updated successfully', ['green-bg', 'white-color']);
+          this.openSnackbar('Task updated successfully', ['green-bg', 'white-color']);
         })
         break;
       default:
@@ -97,12 +97,8 @@ export class GenericService {
 
     // Sort Tasks - uncompleted tasks followed by completed tasks
     sortTodos(todos: Todo[]): Todo[]{
-    const pendingTasks: Todo[] = [];
-    const competedTasks: Todo[] = [];
-    todos.forEach((todo: Todo) => {
-      if(todo.status === 'Pending') pendingTasks.push(todo);
-      if(todo.status === 'Completed') competedTasks.push(todo);
-    })
+    const pendingTasks: Todo[] = todos.filter((tasks: Todo) => tasks.status == "Pending");
+    const competedTasks: Todo[] = todos.filter((tasks: Todo) => tasks.status == "Completed");
     return [...pendingTasks, ...competedTasks];
     }
 }

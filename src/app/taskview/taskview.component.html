@@ -1,4 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0px">
+    <mat-spinner *ngIf="dataLoaded" class="spinner"></mat-spinner>
     <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px">
         <app-toolbar [username]="username"></app-toolbar>
         <div class="section-padding" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="80vh">
@@ -16,7 +17,7 @@
                                 <b>{{ header.label }}</b>
                             </div>
                         </div>
-                        <div class="scroll" *ngIf="todos?.length" fxFlex="72" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
+                        <div class="scroll" *ngIf="todos?.length" fxFlex="52vh" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
                             <app-task *ngFor="let task of todos" [task]="task"></app-task>
                         </div>
                         <div class="scroll" *ngIf="!todos?.length" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">

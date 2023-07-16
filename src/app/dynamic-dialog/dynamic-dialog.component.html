@@ -14,8 +14,7 @@
                             <mat-label><b>Task Name</b> <span class="red-color">*</span></mat-label>
                             <mat-form-field class="block-width" [appearance]="'outline'" [hideRequiredMarker]="false">
                                 <input name="taskName" [(ngModel)]="dataModel.taskName" matInput
-                                    placeholder="Enter Task Name" [required]="true" type="text"
-                                    #taskName="ngModel">
+                                    placeholder="Enter Task Name" [required]="true" type="text" #taskName="ngModel">
                                 <mat-error
                                     *ngIf="((taskName?.touched || taskName?.invalid) && taskName.errors?.['required'])">
                                     Task Name is required!
@@ -27,9 +26,9 @@
                         <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                             <mat-form-field class="block-width" [appearance]="'outline'" [hideRequiredMarker]="false">
                                 <mat-label><b>Due Date</b></mat-label>
-                                <input [min]="minDate" readonly (click)="picker.open()" matInput [matDatepicker]="picker" name="dueDate" [(ngModel)]="dataModel.dueDate"
-                                placeholder="Due Date" [required]="true" type="text"
-                                #dueDate="ngModel">
+                                <input [min]="minDate" readonly (click)="picker.open()" matInput
+                                    [matDatepicker]="picker" name="dueDate" [(ngModel)]="dataModel.dueDate"
+                                    placeholder="Due Date" [required]="true" type="text" #dueDate="ngModel">
                                 <mat-datepicker #picker></mat-datepicker>
                                 <mat-error
                                     *ngIf="((dueDate?.touched || dueDate?.invalid) && !dueDate.errors?.['matDatepickerParse'].text)">

@@ -17,10 +17,11 @@ export class TaskviewComponent implements OnInit {
   todos!: Todo[];
   uncompletedTasks: number = 0;
   username: string = '';
+  dataLoaded: boolean = false;
   taskHeaders: any[] = [
     {
       label: 'Task Name',
-      flex: 31
+      flex: 30.5
     },
     {
       label: 'Task Status',
@@ -55,14 +56,18 @@ export class TaskviewComponent implements OnInit {
       });
     } else {
       this.username = username;
-      console.log(this.username)
     }
   }
 
   fetchAllTasks(){
     this.genericService.todos$.subscribe((todos: Todo[]) => {
-      this.todos = todos;
-      this.uncompletedTasks = this.todos.filter((todo: Todo) => todo.status == 'Pending')?.length;
+      // Mimic API call by delaying fethcing the data by 2 seconds
+      this.dataLoaded = true;
+      setTimeout(() => {
+      this.dataLoaded = false;
+        this.todos = todos;
+        this.uncompletedTasks = this.todos.filter((todo: Todo) => todo.status == 'Pending')?.length;
+      }, 2000)
     });
   }
 
