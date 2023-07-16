@@ -109,15 +109,27 @@ h6 {
 }
 
 // Scrollbar Styles
-.scroll {
+.hidden-scroll {
+  overflow-x: hidden;
+}
+
+.scroll-x {
+  overflow-x: auto;
+}
+
+.scroll-y {
   overflow-y: auto;
 }
+
 
 ::-webkit-scrollbar {
   background-color: lighten($color: $primary, $amount: 35);
   width: 8px;
+  height: 8px;
 }
 
-::-webkit-scrollbar-thumb, ::-webkit-scrollbar, .chip {
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar,
+.chip {
   border-radius: 2em;
 }

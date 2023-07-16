@@ -10,7 +10,7 @@ import { GenericService } from '../services/generic.service';
 
 export class TaskComponent {
   @Input('task') task!: Todo;
-
+  
   constructor(private genericService: GenericService){}
 
   openConfirmDialog(id : string){

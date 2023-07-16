@@ -1,23 +1,23 @@
-<div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1em">
-    <div fxLayout="column" fxLayoutAlign="center stretch" fxFlex="31">
-        <div fxLayout="row wrap" fxLayoutAlign="start center">
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0px">
+    <div fxLayout="column" fxLayoutAlign="center stretch" fxFlex="19" fxFlex.xs="120px">
+        <div fxLayout="row" fxLayoutAlign="start center">
             <mat-checkbox [checked]="task.status === 'Completed'" (change)="toggleCheckbox($event.checked)"></mat-checkbox>
-            <span>{{ task.taskName }}</span>
+            <span class="checkbox-label">{{ task.taskName }}</span>
         </div>
     </div>
-    <div fxLayout="column" fxLayoutAlign="start start" fxFlex="15">
-        <span [ngClass]="{'orange-bg': task.status == 'Pending', 'green-bg': task.status == 'Completed' }" class="chip">{{ task.status }}</span>
+    <div fxLayout="column" fxLayoutAlign="start center" fxFlex="19" fxFlex.xs="70px">
+        <span [class]="task.status == 'Pending' ? 'orange-bg': 'green-bg'" class="chip">{{ task.status }}</span>
     </div>
-    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15">
-        <span [ngClass]="{'primary-color': task.priority == 'Low', 'orange-color': task.priority == 'Average', 'red-color': task.priority == 'Urgent' }"><b> {{ task.priority }} </b></span>
-    </div>
-
-    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15">
-        <span><b> {{ task.dueDate | date: 'mediumDate' }} </b></span>
+    <div fxLayout="column" fxLayoutAlign="start center" fxFlex="19" fxFlex.xs="80px">
+        <span [class]=" task.priority == 'Low' ? 'primary-color' : task.priority == 'Average' ? 'orange-color' : 'red-color'"><b> {{ task.priority }} </b></span>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="15">
-        <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap=".25em">
+    <div fxLayout="column" fxLayoutAlign="start center" fxFlex="19" fxFlex.xs="70px">
+        <span><b> {{ task.dueDate | date: 'shortDate' }} </b></span>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start center" fxFlex="19"  fxFlex.xs="70px">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".25em">
             <mat-icon (click)="editTask(task)" class="orange-color pointer">edit</mat-icon>
             <mat-icon (click)="openConfirmDialog(task.id)" class="red-color pointer">delete</mat-icon>
         </div>

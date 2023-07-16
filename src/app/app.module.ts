@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { DynamicDialogComponent } from './dynamic-dialog/dynamic-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { UserDetailsDialogComponent } from './user-details-dialog/user-details-dialog.component';
+import { CountsComponent } from './counts/counts.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserDetailsDialogComponent } from './user-details-dialog/user-details-d
     HomeComponent,
     DynamicDialogComponent,
     ConfirmDialogComponent,
-    UserDetailsDialogComponent
+    UserDetailsDialogComponent,
+    CountsComponent
   ],
   imports: [
     BrowserModule,

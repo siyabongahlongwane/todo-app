@@ -2,25 +2,35 @@
     <mat-spinner *ngIf="dataLoaded" class="spinner"></mat-spinner>
     <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px">
         <app-toolbar [username]="username"></app-toolbar>
-        <div class="section-padding" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="80vh">
+        <div class="section-padding" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px" fxFlex="80vh" fxFlex.xs="85vh">
             <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1em">
-                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1.5em">
-                    <h1>You have <b><span class="red-color">{{uncompletedTasks}}</span></b> unfinished tasks</h1>
-                    <button (click)="openTaskDialogFromService()" mat-raised-button
-                        color="primary"><mat-icon>add</mat-icon>Add Task</button>
-                </div>
                 <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="0px">
                     <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1.5em">
-                        <h2>Tasks</h2>
-                        <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1em">
-                            <div *ngFor="let header of taskHeaders" fxLayout="column" fxLayoutAlign="center stretch" [fxFlex]="header.flex">
-                                <b>{{ header.label }}</b>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
+                            <h2>Tasks</h2>
+                            <button (click)="openTaskDialogFromService()" class="rounded-btn" color="primary" mat-raised-button><mat-icon>add</mat-icon>
+                                New Task
+                            </button>
+                        </div>
+                        <app-counts *ngIf="todos?.length" [tasks]="todos"></app-counts>
+
+                        <div class="scroll-x" *ngIf="todos?.length" fxLayout="column"
+                            fxLayoutAlign="start stretch" fxLayoutGap="1em">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0px">
+                                <div *ngFor="let header of taskHeaders; let i = index;" fxLayout="column" fxLayoutAlign.xs="center stretch" [fxLayoutAlign]="i == 0 ? 'center start' : 'center center'"
+                                    [fxFlex]="header.flex" [fxFlex.xs]="header.flexXtraSmall">
+                                    <b>{{ header.label }}</b>
+                                </div>
                             </div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0px">
+                                <div class="task-view"  fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch">
+                                    <app-task *ngFor="let task of todos" [task]="task"></app-task>
+                                </div>
+                            </div>
+                             
                         </div>
-                        <div class="scroll" *ngIf="todos?.length" fxFlex="52vh" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
-                            <app-task *ngFor="let task of todos" [task]="task"></app-task>
-                        </div>
-                        <div class="scroll" *ngIf="!todos?.length" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap=".5em">
+                        <div *ngIf="!todos?.length" fxLayout="column" fxLayoutAlign="start stretch"
+                            fxLayoutGap=".5em">
                             <h1>You have no tasks yet.</h1>
                         </div>
                     </div>

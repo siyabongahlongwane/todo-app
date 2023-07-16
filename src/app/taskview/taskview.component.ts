@@ -15,29 +15,33 @@ export interface Todo {
 })
 export class TaskviewComponent implements OnInit {
   todos!: Todo[];
-  uncompletedTasks: number = 0;
   username!: string | null;
   dataLoaded: boolean = false;
   taskHeaders: any[] = [
     {
-      label: 'Task Name',
-      flex: 30.5
+      label: 'Name',
+      flex: 19,
+      flexXtraSmall: '120px'
     },
     {
-      label: 'Task Status',
-      flex: 15
+      label: 'Status',
+      flex: 19,
+      flexXtraSmall: '70px'
     },
     {
-      label: 'Importance',
-      flex: 15
+      label: 'Priority',
+      flex: 19,
+      flexXtraSmall: '80px'
     },
     {
       label: 'Due Date',
-      flex: 15
+      flex: 19,
+      flexXtraSmall: '70px'
     },
     {
       label: 'Action',
-      flex: 15
+      flex: 19,
+      flexXtraSmall: '70px'
     }
   ]
   constructor(private genericService: GenericService){}
@@ -62,12 +66,11 @@ export class TaskviewComponent implements OnInit {
 
   fetchAllTasks(){
     this.genericService.todos$.subscribe((todos: Todo[]) => {
-      // Mimic API call by delaying fethcing the data by 2 seconds
+      // Mimic API call by delaying mapping the data by 2 seconds
       this.dataLoaded = true;
       setTimeout(() => {
       this.dataLoaded = false;
         this.todos = todos;
-        this.uncompletedTasks = this.todos.filter((todo: Todo) => todo.status == 'Pending')?.length;
       }, 2000)
     });
   }

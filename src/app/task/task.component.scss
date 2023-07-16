@@ -1,3 +1,8 @@
 :host{
     border-bottom: 2px solid #ccc;
 }
+
+.checkbox-label {
+    max-width: 150px;
+    overflow-wrap: anywhere;
+}
