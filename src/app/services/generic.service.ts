@@ -60,7 +60,7 @@ export class GenericService {
 
   // Fetch Tasks
   fetchTodos() {
-    this.todosArr = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_KEY) || '[]');
+    this.todosArr = this.fetchFromLocalStorage(this.LOCAL_STORAGE_KEY) || [];
     this.updateTodos('', this.todosArr);
   }
 
@@ -91,7 +91,7 @@ export class GenericService {
       default:
         break;
     }
-    localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.todosArr));
+    this.saveInLocalStorage(this.LOCAL_STORAGE_KEY, this.todosArr);
     this.todosSubject.next(this.sortTodos(this.todosArr));
   }
 
@@ -100,5 +100,15 @@ export class GenericService {
     const pendingTasks: Todo[] = todos.filter((tasks: Todo) => tasks.status == "Pending");
     const competedTasks: Todo[] = todos.filter((tasks: Todo) => tasks.status == "Completed");
     return [...pendingTasks, ...competedTasks];
+    }
+
+    // Store in local storage
+    saveInLocalStorage(key: string, valueToStore: any){
+      localStorage.setItem(key, JSON.stringify(valueToStore));
+    }
+
+    // Get from local storage
+    fetchFromLocalStorage(key: string){
+      return JSON.parse(localStorage.getItem(key)!);
     }
 }

@@ -16,7 +16,7 @@ export interface Todo {
 export class TaskviewComponent implements OnInit {
   todos!: Todo[];
   uncompletedTasks: number = 0;
-  username: string = '';
+  username!: string | null;
   dataLoaded: boolean = false;
   taskHeaders: any[] = [
     {
@@ -48,14 +48,15 @@ export class TaskviewComponent implements OnInit {
   }
 
   checkIfCapturedUsername(){
-    const user = localStorage.getItem('username');
+    const user = this.genericService.fetchFromLocalStorage('username');
     const username = user ? user : null;
     if(!username) {
       this.genericService.openUserNameDialog().subscribe((username: string) => {
-        localStorage.setItem('username', username);
+        this.genericService.saveInLocalStorage('username', username);
+        this.username = this.genericService.fetchFromLocalStorage('username');
       });
     } else {
-      this.username = username;
+        this.username = this.genericService.fetchFromLocalStorage('username');
     }
   }
 
