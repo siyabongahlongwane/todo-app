@@ -10,8 +10,7 @@ import { MaterialModule } from './modules/material.module';
 import { ContainerComponent } from './container/container.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TaskviewComponent } from './taskview/taskview.component';
-import { TaskComponent } from './task/task.component';
-import { HomeComponent } from './home/home.component';
+import { TaskComponent } from './task/task.component';;
 import { DynamicDialogComponent } from './dynamic-dialog/dynamic-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { UserDetailsDialogComponent } from './user-details-dialog/user-details-dialog.component';
@@ -24,7 +23,6 @@ import { CountsComponent } from './counts/counts.component';
     ToolbarComponent,
     TaskviewComponent,
     TaskComponent,
-    HomeComponent,
     DynamicDialogComponent,
     ConfirmDialogComponent,
     UserDetailsDialogComponent,
